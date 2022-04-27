@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+
+<TITLE></TITLE>
+<style>
+.cera{float:left;}
+.moji{font-size:15px;color:#8B0000;width:800px;height:640px;margin:30px 100px 120px 200px;solid;line-height:120% ;}
+</style>
+</HEAD>
+<body>
+
+
+<input type="text" id="okane">
+
+<input type="button" id="btn-local" value="calc" onClick="alle();">
+<input type="button" id="btn-local" value="calc_minus" onClick="alle2();">
+
+<p id="ouen"></p>
+
+
+
+
+<script>
+
+function alle(){
+const type ="local";
+const storage = (type === "local")?  localStorage:sessionStorage;
+var value = 0;
+var mayu = localStorage.getItem(value);
+
+
+
+
+if( mayu === null ){
+    storage.setItem(value, 1);  // 1を保存する
+  }
+  //----------------------------------------
+  // 存在する場合は +1 する
+  //----------------------------------------
+ else{
+
+mayu = Number(mayu);
+
+
+
+var money=document.getElementById("okane").value;
+
+money = Number(money);
+
+var money2=mayu+money;
+
+document.write(money2);
+
+
+
+var key =0;
+var value=0;
+
+
+var e = 'データがありません';
+
+try{
+  // locaStorageに保存
+  localStorage.setItem(value, money2);
+ }
+catch(e){
+  console.log(e);
+}
+
+document.querySelector("#btn-local").addEventListener("click", (e)=>{
+    addStorage("local", key);
+    e.preventDefault();        // submit後の処理をキャンセル(画面遷移しない)
+  })
+
+}
+
+}
+
+
+//マイナスの処理
+
+
+function alle2(){
+const type ="local";
+const storage = (type === "local")?  localStorage:sessionStorage;
+var value = 0;
+var mayu = localStorage.getItem(value);
+
+
+
+
+if( mayu === null ){
+    storage.setItem(value, 1);  // 1を保存する
+  }
+  //----------------------------------------
+  // 存在する場合は +1 する
+  //----------------------------------------
+ else{
+
+mayu = Number(mayu);
+
+
+
+var money=document.getElementById("okane").value;
+
+money = Number(money);
+
+var money2=mayu-money;
+
+document.write(money2);
+
+
+
+var key =0;
+var value=0;
+
+
+var e = 'データがありません';
+
+try{
+  // locaStorageに保存
+  localStorage.setItem(value, money2);
+ }
+catch(e){
+  console.log(e);
+}
+
+document.querySelector("#btn-local").addEventListener("click", (e)=>{
+    addStorage("local", key);
+    e.preventDefault();        // submit後の処理をキャンセル(画面遷移しない)
+  })
+
+}
+
+}
+</script>
+
+
+
+
+
+</body>
+</html>
+
+
